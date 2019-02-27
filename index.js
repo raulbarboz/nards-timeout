@@ -23,7 +23,7 @@ app.use("/public", express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
     firebase.getForm().then((child) => {
-         res.render('index', {table: child, days: moment().diff( '2019-06-03', 'days')})
+         res.render('index', {table: child, days: moment().diff( '2019-06-02', 'days')})
     })
    
 })
