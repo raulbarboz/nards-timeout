@@ -7,6 +7,9 @@ const favicon = require('express-favicon');
 const firebase = require('./firebase.js');
 const moment = require('moment');
 
+port = process.env.PORT || 8080;
+ip = process.env.IP || '0.0.0.0';
+
 //set the view engine to ejs
 app.set('view engine', 'ejs');
 //firebase.getForm();
@@ -33,6 +36,6 @@ app.post('/send', (req, res) => {
   
 })
 
-app.listen(8080, '0.0.0.0', () => {
+app.listen(port, ip, () => {
     console.log(`App running on 0.0.0.0:8080`)
 })
