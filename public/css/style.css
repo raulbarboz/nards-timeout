@@ -4,7 +4,7 @@
     width:50%;
 }
 
-.content{
+.content, .content-bottom{
     background:#a4f5a487;
     padding:20px;
 }

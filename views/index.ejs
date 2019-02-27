@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="publick/favicon.ico" />
 
     <!-- As três tags meta acima *precisam* serem as primeiras na head; qualquer outro conteúdo deve vir *depois* dessas tags -->
 
@@ -23,11 +24,10 @@
                  
                       <div class="col-md-5">
                           <div class="rounded"><image src="https://firebasestorage.googleapis.com/v0/b/nardoni-countdown.appspot.com/o/nardoni.jpg?alt=media&token=f56dcb10-8436-4bd9-9f8f-348205f38b4a"/></div>
-                          
                       </div>
                       <div class="col-md-7 speech-bubble">
                               <h1>Eu vou para a disney em:</h1>
-                              <h2>96 dias!</h2>
+                              <h2><%= Math.abs(days) %> dias!</h2>
                       </div>
                
               </div>
@@ -48,32 +48,64 @@
                   <thead>
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">First</th>
-                      <th scope="col">Last</th>
-                      <th scope="col">Handle</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Muamba</th>
+                      <th scope="col">Pago/Não Pago</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <% table.forEach((x, index) => { %>
                     <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
+                    <th><%= index %></th>
+                    <td><%= x.name %></td>
+                    <td><%= x.muamba %></td>
+                    <td><% if(x.pagto === 'jaDep'){ %> <input class="form-check-input" type="checkbox" checked="checked"> <% }else{ %> <input class="form-check-input" type="checkbox"/><% } %></td>
                     </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td>Larry</td>
-                      <td>the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
+                    <% }) %>
                   </tbody>
                 </table>
+          </div>
+          <div class="content-bottom">
+          <div class="container">
+              <form action="/send" method="post">
+                  <div class="form-group row">
+                    <label for="name" class="col-sm-2 col-form-label">Nome</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="name" class="form-control" id="nome" placeholder="Nome">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="muamba" class="col-sm-2 col-form-label">Muamba</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="muamba" class="form-control" id="muamba" placeholder="Muamba">
+                    </div>
+                  </div>
+                  <fieldset class="form-group">
+                    <div class="row">
+                      <legend class="col-form-label col-sm-2 pt-0">PAGAMENTO</legend>
+                      <div class="col-sm-10">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="jaDep" checked>
+                          <label class="form-check-label" for="gridRadios1">
+                           Já depositei
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="noDep">
+                          <label class="form-check-label" for="gridRadios2">
+                            Não depositei
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                  <div class="form-group row">
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-primary">Enviar</button>
+                    </div>
+                  </div>
+                </form>
+          </div>
           </div>
       </div>
     
